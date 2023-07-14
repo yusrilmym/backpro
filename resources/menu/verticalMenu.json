@@ -1,0 +1,22 @@
+{
+  "menu": [
+    {
+      "url": "/",
+      "name": "Dashboard",
+      "icon": "menu-icon tf-icons bx bx-home-circle",
+      "slug": "dashboard-analytics"
+    },
+    {
+      "url": "/data",
+      "name": "Data Training",
+      "icon": "menu-icon tf-icons bx bxs-data",
+      "slug": "data"
+    },
+    {
+      "url": "/backpro",
+      "name": "Backpropagation Training",
+      "icon": "menu-icon tf-icons bx bx-data",
+      "slug": "backpro"
+    }
+  ]
+}
