@@ -33,7 +33,7 @@ class data extends Controller
       $imt = $beratnumber/($rubahtinggi*$rubahtinggi);
 
       // echo $result;
-      return redirect('/data')->with('message', 'IMT anda adalah: '.round($imt,1));
+      return redirect('/data')->with('message', ''.round($imt,1));
   }
 
   public function store(Request $request)

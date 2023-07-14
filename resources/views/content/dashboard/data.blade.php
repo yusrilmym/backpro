@@ -9,36 +9,6 @@
 
 <!-- Basic Layout -->
 <div class="row">
-  <div class="col-xxl">
-    <div class="card mb-4">
-      <div class="card-header d-flex justify-content-between align-items-center">
-        <h5 class="mb-0">Hitung IMT</h5> <small class="text-muted float-end">Default label</small>
-      </div>
-      <div class="card-body">
-        <form action="calculation" method="POST">
-        @csrf
-          <div class="mb-3">
-            <label class="form-label">Berat Badan</label>
-            <input type="number" step="0.1" class="form-control" name="beratnumber" placeholder="Masukan Berat Badan Anda" />
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Tinggi Badan</label>
-            <input type="number" step="0.1" class="form-control" name="tingginumber" placeholder="Masukan Tinggi Badan Anda" />
-          </div>
-          <button type="submit" class="btn btn-primary">Send</button>
-        </form>
-      </div>
-    </div>
-    <div class="row">
-        <div class="col-md-3 m-auto">
-            @if(session('message'))
-            <div class="alert alert-warning">
-                <div class="text-center">{{session('message')}}</div>
-            </div>
-            @endif
-        </div>
-    </div>
-  </div>
     <div class="col-xxl">
         <div class="card mb-4">
           <div class="card-header d-flex align-items-center justify-content-between">
@@ -56,6 +26,15 @@
             @endif
             <form action="datanormalisasi" method="POST">
             @csrf
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">NIK</label>
+                <div class="col-sm-10">
+                  <div class="input-group input-group-merge">
+                    <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-id-card"></i></span>
+                    <input type="text" name="nik" class="form-control" placeholder="Masukan NIK anda" />
+                  </div>
+                </div>
+              </div>
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Nama</label>
                 <div class="col-sm-10">
@@ -83,6 +62,15 @@
                         Perempuan
                       </label>
                     </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Tanggal Lahir</label>
+                <div class="col-sm-10">
+                  <div class="input-group input-group-merge">
+                    <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-group"></i></span>
+                    <input type="date" name="tanggallahir" data-date-format="DD MMMM YYYY" class="form-control" />
                   </div>
                 </div>
               </div>
@@ -139,10 +127,55 @@
             </form>
           </div>
         </div>
+  </div>
+  <div class="col-xxl">
+    <div class="card mb-4">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Hitung IMT</h5> <small class="text-muted float-end">Default label</small>
+      </div>
+      <div class="card-body">
+        <form action="calculation" method="POST">
+        @csrf
+          <div class="mb-3">
+            <label class="form-label">Berat Badan</label>
+            <input type="number" step="0.1" class="form-control" name="beratnumber" placeholder="Masukan Berat Badan Anda" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Tinggi Badan</label>
+            <input type="number" step="0.1" class="form-control" name="tingginumber" placeholder="Masukan Tinggi Badan Anda" />
+          </div>
+          <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+      </div>
     </div>
+    <div class="row">
+        <div class="col-md-3 m-auto">
+            @if(session('message'))
+            <div class="alert alert-warning">
+                <div class="text-center">{{session('message')}}</div>
+            </div>
+            @endif
+        </div>
+    </div>
+    <div class="card mb-4">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <h2 class="mb-0">GIZI ANDA ADALAH Gizi Buruk</h2>
+            <!-- @if(session('message'))
+                <h3 class="text-center">{{session('message')}}</h3>
+            @endif -->
+      </div>
+    </div>
+
+              </div>
     <!-- Responsive Table -->
 <div class="card">
     <h5 class="card-header">Data Training Hasil Normalisasi</h5>
+    <div class="navbar-nav align-items-center">
+          <div class="nav-item d-flex align-items-center">
+            <i class="bx bx-search fs-4 lh-0"></i>
+            <input type="text" class="form-control border-0 shadow-none" placeholder="Search..." aria-label="Search...">
+          </div>
+        </div>
     <div class="table-responsive text-nowrap">
       <table class="table">
         <thead>

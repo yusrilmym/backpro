@@ -8,7 +8,7 @@
   ],
   "license": "MIT",
   "require": {
-    "php": "^8.0.2",
+    "php": "^8.0.28",
     "fruitcake/laravel-cors": "^2.0.5",
     "guzzlehttp/guzzle": "^7.2",
     "laravel/framework": "^9.0",
@@ -58,7 +58,11 @@
   "config": {
     "optimize-autoloader": true,
     "preferred-install": "dist",
-    "sort-packages": true
+    "sort-packages": true,
+    "platform": {
+      "php": "8.0.28"
+    },
+    "platform-check": false
   },
   "minimum-stability": "dev",
   "prefer-stable": true
