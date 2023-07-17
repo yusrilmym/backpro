@@ -98,32 +98,22 @@
             <tr>
               <td>1</td>
               <td>Z1</td>
-              <td>{{(session('z1'))}}</td>
+              <td>{{(session('zin1'))}}</td>
             </tr>
             <tr>
                 <td>2</td>
                 <td>Z2</td>
-                <td>{{session('z2')}}</td>
+                <td>{{session('z1')}}</td>
               </tr>
             <tr>
               <td>3</td>
               	<td>Z3</td>	
-                <td>{{session('z3')}}</td>
+                <td>{{session('ng')}}</td>
             </tr>
             <tr>
                 <td>4</td>	
                 <td>Z4</td>
-                <td>{{session('z4')}}</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>Z5</td>
-                <td>{{session('z5')}}</td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>Z6</td>
-                <td>{{session('z6')}}</td>
+                <td>{{session('ngas')}}</td>
             </tr>
           </tbody>
         </table>
@@ -181,7 +171,7 @@
   </div> --}}
 
   <div class="card">
-    <h5 class="card-header">Pengaktifan Bobot (Aktivasi Sigmoid)</h5>
+    <h5 class="card-header">Tes</h5>
     <div class="card-body">
       <div class="table-responsive text-nowrap">
         <table class="table table-bordered">
@@ -195,33 +185,23 @@
           <tbody>
             <tr>
               <td>1</td>
-              <td>Gizi Buruk</td>
-              <td>{{(session('ngas'))}}</td>
+              <td>Z_in1</td>
+              <td>{{Session::get('zin1')}}</td>
             </tr>
             <tr>
                 <td>2</td>
-                <td>Gizi Kurang</td>
-                <td>{{session('ngkas')}}</td>
+                <td>Z1</td>
+                <td>{{Session::get('z1')}}</td>
               </tr>
             <tr>
               <td>3</td>
-              	<td>Gizi Baik</td>	
-                <td>{{session('ngbas')}}</td>
+              	<td>gizi</td>	
+                <td>{{Session::get('ng')}}</td>
             </tr>
             <tr>
                 <td>4</td>	
-                <td>Beresiko Gizi Lebih</td>
-                <td>{{session('ngzas')}}</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>Gizi Lebih</td>
-                <td>{{session('nglas')}}</td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>Obesitas</td>
-                <td>{{session('ngoas')}}</td>
+                <td>Yk</td>
+                <td>{{Session::get('ngas')}}</td>
             </tr>
           </tbody>
         </table>
@@ -230,17 +210,17 @@
   </div>
 </div>
 
-@if(session('ngas') >= 0.956 && session('ngas') <= 0.96)
+@if(Session::get('ngas') >= 0.561 && Session::get('ngas') <= 0.603)
 <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Hasil Gizi anda adalah </span>Gizi Buruk</h4>
-@elseif(session('ngas') >= 0.930 && session('ngas') <= 0.941)
+@elseif(Session::get('ngas') >= 0.604 && Session::get('ngas') <= 0.646)
 <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Hasil Gizi anda adalah </span>Gizi Kurang</h4>
-@elseif(session('ngas') >= 0.847 && session('ngas') <= 0.876)
+@elseif(Session::get('ngas') >= 0.647 && Session::get('ngas') <= 0.689)
 <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Hasil Gizi anda adalah </span>Gizi Baik</h4>
-@elseif(session('ngas') >= 0.930 && session('ngas') <= 0.952)
+@elseif(Session::get('ngas') >= 0.69 && Session::get('ngas') <= 0.732)
 <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Hasil Gizi anda adalah </span>Beresiko Gizi Lebih</h4>
-@elseif(session('ngas') >= 0.950 && session('ngas') <= 0.963)
+@elseif(Session::get('ngas') >= 0.733 && Session::get('ngas') <= 0.775)
 <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Hasil Gizi anda adalah </span>Gizi Lebih</h4>
-@elseif(session('ngas') >= 0.932 && session('ngas') <= 0.947)
+@elseif(Session::get('ngas') >= 0.776 && Session::get('ngas') <= 0.819)
 <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Hasil Gizi anda adalah </span>Obesitas</h4>
 @endif
 

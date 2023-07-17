@@ -12,7 +12,7 @@
     <div class="col-xxl">
         <div class="card mb-4">
           <div class="card-header d-flex align-items-center justify-content-between">
-            <h5 class="mb-0">Hitung Normalisasi</h5> <small class="text-muted float-end">Merged input group</small>
+            <h5 class="mb-0">Data Normalisasi</h5> <small class="text-muted float-end">Merged input group</small>
           </div>
           <div class="card-body">
             @if ($errors->any())
@@ -30,8 +30,8 @@
                 <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">NIK</label>
                 <div class="col-sm-10">
                   <div class="input-group input-group-merge">
-                    <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-id-card"></i></span>
-                    <input type="text" name="nik" class="form-control" placeholder="Masukan NIK anda" />
+                    <span id="basic-icon-default-number" class="input-group-text"><i class="bx bx-id-card"></i></span>
+                    <input type="number" name="nik" class="form-control" placeholder="Masukan NIK anda" />
                   </div>
                 </div>
               </div>
@@ -127,8 +127,24 @@
             </form>
           </div>
         </div>
+        <div class="card mb-4">
+        @if(Session::get('ngas') >= 0.561 && Session::get('ngas') <= 0.603)
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Hasil Gizi anda adalah </span>Gizi Buruk</h4>
+        @elseif(Session::get('ngas') >= 0.604 && Session::get('ngas') <= 0.646)
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Hasil Gizi anda adalah </span>Gizi Kurang</h4>
+        @elseif(Session::get('ngas') >= 0.647 && Session::get('ngas') <= 0.689)
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Hasil Gizi anda adalah </span>Gizi Baik</h4>
+        @elseif(Session::get('ngas') >= 0.69 && Session::get('ngas') <= 0.732)
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Hasil Gizi anda adalah </span>Beresiko Gizi Lebih</h4>
+        @elseif(Session::get('ngas') >= 0.733 && Session::get('ngas') <= 0.775)
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Hasil Gizi anda adalah </span>Gizi Lebih</h4>
+        @elseif(Session::get('ngas') >= 0.776 && Session::get('ngas') <= 0.819)
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Hasil Gizi anda adalah </span>Obesitas</h4>
+        @endif
+
+    </div>
   </div>
-  <div class="col-xxl">
+  <!-- <div class="col-xxl">
     <div class="card mb-4">
       <div class="card-header d-flex justify-content-between align-items-center">
         <h5 class="mb-0">Hitung IMT</h5> <small class="text-muted float-end">Default label</small>
@@ -156,15 +172,8 @@
             </div>
             @endif
         </div>
-    </div>
-    <div class="card mb-4">
-      <div class="card-header d-flex justify-content-between align-items-center">
-        <h2 class="mb-0">GIZI ANDA ADALAH Gizi Buruk</h2>
-            <!-- @if(session('message'))
-                <h3 class="text-center">{{session('message')}}</h3>
-            @endif -->
-      </div>
-    </div>
+    </div> -->
+
 
               </div>
     <!-- Responsive Table -->
@@ -181,30 +190,32 @@
         <thead>
           <tr class="text-nowrap">
             <th>#</th>
+            <th>NIK</th>
             <th>Nama</th>
             <th>Jenis Kelamin</th>
+            <th>Tanggal Lahir</th>
             <th>Nama Orang Tua</th>
             <th>Usia</th>
             <th>Berat Badan</th>
             <th>Tinggi Badan</th>
             <th>IMT</th>
             <th>BP</th>
-            <th>penilaian</th>
           </tr>
         </thead>
         <tbody>
             @foreach ($data as $row)
             <tr>
                 <th scope="row">{{$loop->iteration}}</th>
+                <td>{{$row->nik}}</td>
                 <td>{{$row->name}}</td>
                 <td>{{$row->kelamin}}</td>
+                <td>{{date('j F Y', strtotime($row->tanggallahir))}}</td>
                 <td>{{$row->namaortu}}</td>
                 <td>{{$row->age}}</td>
                 <td>{{$row->berat}}</td>
                 <td>{{$row->tinggi}}</td>
                 <td>{{$row->imt}}</td>
-                <td>{{$row->bp}}</td>
-                <td>{{$row->penilaian}}</td>
+                <td>{{$row->hasil}}</td>
               </tr>
             @endforeach
         </tbody>
