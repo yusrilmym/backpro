@@ -62,7 +62,7 @@ class data extends Controller
     $databaru = DB::table('kriteria_usia')
     ->where('kriteria_usia', $request->age)->first();
     $databaru1 = DB::table('kriteria_berat')
-    ->where('kriteria_berat', $request->berat)->first();
+    ->where('kriteria_berat', round($request->berat,0))->first();
     $databaru2 = DB::table('kriteria_tinggi')
     ->where('kriteria_tinggi', round($request->tinggi,0))->first();
     
