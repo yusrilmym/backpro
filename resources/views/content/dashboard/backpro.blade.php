@@ -53,7 +53,7 @@
                   </div>
                 </div>
               </div>
-              <div class="row mb-3">
+              {{-- <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">IMT Anda</label>
                 <div class="col-sm-10">
                   <div class="input-group input-group-merge">
@@ -61,7 +61,7 @@
                     <input type="number" step="any" name="imtbackpro" class="form-control" placeholder="Masukan IMT anda"/>
                   </div>
                 </div>
-              </div>
+              </div> --}}
               <div class="row justify-content-end">
                 <div class="col-sm-10">
                   <button type="submit" class="btn btn-primary">Send</button>
