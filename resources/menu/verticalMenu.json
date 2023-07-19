@@ -8,13 +8,13 @@
     },
     {
       "url": "/data",
-      "name": "Data Training",
+      "name": "Input Data Gizi",
       "icon": "menu-icon tf-icons bx bxs-data",
       "slug": "data"
     },
     {
       "url": "/backpro",
-      "name": "Backpropagation Training",
+      "name": "Check Status Gizi",
       "icon": "menu-icon tf-icons bx bx-data",
       "slug": "backpro"
     }
