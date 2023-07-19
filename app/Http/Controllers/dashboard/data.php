@@ -23,18 +23,19 @@ class data extends Controller
     return view('content.dashboard.data')->with('data', $data);
   }
 
-  public function hitung(Request $request)
-  {
-      $usianumber = $request->input('usianumber');
-      $beratnumber = $request->input('beratnumber');
-      $tingginumber = $request->input('tingginumber');
-      $operator = $request->input('operator');
-      $rubahtinggi = $tingginumber/100;
-      $imt = $beratnumber/($rubahtinggi*$rubahtinggi);
+  // public function hitung(Request $request)
+  // {
+  //     $usianumber = $request->input('usianumber');
+  //     $beratnumber = $request->input('beratnumber');
+  //     $tingginumber = $request->input('tingginumber');
+  //     $operator = $request->input('operator');
+  //     $rubahtinggi = $tingginumber/100;
+  //     $imt = $beratnumber/($rubahtinggi*$rubahtinggi);
 
-      // echo $result;
-      return redirect('/data')->with('message', ''.round($imt,1));
-  }
+  //     // echo $result;
+  //     return redirect('/data')->with('message', ''.round($imt,1));
+  // }
+
 
   public function store(Request $request)
   {
@@ -43,8 +44,6 @@ class data extends Controller
       'age' => 'required',
   ]);
   // Normalisasi::create($request->all());
-
-
   $minusia = 0;
   $maxusia = 59;
   $minberat = 1.62;
@@ -52,7 +51,7 @@ class data extends Controller
   $mintinggi = 39;
   $maxtinggi = 198;
   $minimt = 4.1;
-  $maximt = 30.1;
+  $maximt = 30.9;
 
   $z1v1 = 0.12;
   $z1v2 = 0.11;
@@ -66,24 +65,28 @@ class data extends Controller
   $normalusia = round(0.8*($request->age-$minusia)/($maxusia-$minusia)+0.1,3);
   $normalberat = round(0.8*($request->berat-$minberat)/($maxberat-$minberat)+0.1,3);
   $normaltinggi = round(0.8*($request->tinggi-$mintinggi)/($maxtinggi-$mintinggi)+0.1,3);
-  $normalimt = round(0.8*($request->imt-$minimt)/($maximt-$minimt)+0.1,3);
+
+  $hitungtinggi = $request->tinggi/100;//bener
+  $hasilimt = $request->berat/($hitungtinggi*$hitungtinggi);//bener
+  $normalimt = round(0.8*($hasilimt-$minimt)/($maximt-$minimt)+0.1,3);//salah
 
   $zin1 = round(($wgk+($normalusia*$z1v1)+($normalberat*$z1v2)+($normaltinggi*$z1v3)+($normalimt* $z1v4)),2);
   $z1 = round(1/(1+EXP(-($zin1))),3);
   $ng = round(($wgb+($z1*$z1v1)+($z1*$z1v2)+($z1*$z1v3)+($z1*$z1v4)),3);
-  
-  $hitungtinggi = $request->tinggi/100;
-  $hasilimt = round($request->berat/($hitungtinggi*$hitungtinggi),1);
+
   Normalisasi::create([
     'name'=> $request->name,
     'nik'=> $request->nik,
     'kelamin' => $request->kelamin,
     'tanggallahir' => date($request->tanggallahir),
     'namaortu' => $request->namaortu,
-    'age'=> round(0.8*($request->age-$minusia)/($maxusia-$minusia)+0.1,3),
-    'berat'=> round(0.8*($request->berat-$minberat)/($maxberat-$minberat)+0.1,3),
-    'tinggi'=> round(0.8*($request->tinggi-$mintinggi)/($maxtinggi-$mintinggi)+0.1,3),
-    'imt'=> round(0.8*($hasilimt-4.1)/(30.1-4.1)+0.1,3),
+    'age' => $normalusia,
+    'berat' => $normalberat,
+    'tinggi' => $normaltinggi,
+    'imt'=> $normalimt,
+    // 'age'=> round(0.8*($request->age-$minusia)/($maxusia-$minusia)+0.1,3),
+    // 'berat'=> round(0.8*($request->berat-$minberat)/($maxberat-$minberat)+0.1,3),
+    // 'tinggi'=> round(0.8*($request->tinggi-$mintinggi)/($maxtinggi-$mintinggi)+0.1,3),
     // 'imt'=> $hasilimt,
     'hasil' => round(1/(1+EXP(-($ng))),3)
   ]);
