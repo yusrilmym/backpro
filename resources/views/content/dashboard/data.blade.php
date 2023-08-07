@@ -88,7 +88,7 @@
                 <div class="col-sm-10">
                   <div class="input-group input-group-merge">
                     <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-plus"></i></span>
-                    <input type="number" name="age" class="form-control"placeholder="Masukan Usia anda" />
+                    <input type="number" name="age" class="form-control"placeholder="Masukan Usia (bulan)" />
                   </div>
                 </div>
               </div>
@@ -97,7 +97,7 @@
                 <div class="col-sm-10">
                   <div class="input-group input-group-merge">
                     <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-body"></i></span>
-                    <input type="number" name="berat" step="0.1" class="form-control" placeholder="Masukan Berat Badan anda"/>
+                    <input type="number" name="berat" step="0.1" class="form-control" placeholder="Masukan Berat Badan (kg)"/>
                   </div>
                 </div>
               </div>
@@ -106,7 +106,7 @@
                 <div class="col-sm-10">
                   <div class="input-group input-group-merge">
                     <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-group"></i></span>
-                    <input type="number" name="tinggi" step="0.1" class="form-control" placeholder="Masukan Tinggi Badan anda"/>
+                    <input type="number" name="tinggi" step="0.1" class="form-control" placeholder="Masukan Tinggi Badan (cm)"/>
                   </div>
                 </div>
               </div>
@@ -212,9 +212,9 @@
                 <td>{{date('j F Y', strtotime($row->tanggallahir))}}</td>
                 <td>{{$row->namaortu}}</td>
                 <td>{{$row->age}}</td>
-                <td>{{$row->berat}}</td>
-                <td>{{$row->tinggi}}</td>
-                <td>{{$row->imt}}</td>
+                <td>{{$row->berat}} kg</td>
+                <td>{{$row->tinggi}} cm</td>
+                <td>{{$row->imt}} kg/m2</td>
                 <td>{{$row->hasil}}</td>
               </tr>
             @endforeach

@@ -31,7 +31,7 @@
                 <div class="col-sm-10">
                   <div class="input-group input-group-merge">
                     <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-plus"></i></span>
-                    <input type="number" step="any" name="usiabackpro" class="form-control"placeholder="Masukan Usia anda" />
+                    <input type="number" step="any" name="usiabackpro" class="form-control"placeholder="Masukan Usia (bulan)" />
                   </div>
                 </div>
               </div>
@@ -40,7 +40,7 @@
                 <div class="col-sm-10">
                   <div class="input-group input-group-merge">
                     <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-body"></i></span>
-                    <input type="number" step="any" name="beratbackpro" class="form-control" placeholder="Masukan Berat Badan anda"/>
+                    <input type="number" step="any" name="beratbackpro" class="form-control" placeholder="Masukan Berat Badan (kg)"/>
                   </div>
                 </div>
               </div>
@@ -49,7 +49,7 @@
                 <div class="col-sm-10">
                   <div class="input-group input-group-merge">
                     <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-group"></i></span>
-                    <input type="number" step="any" name="tinggibackpro" class="form-control" placeholder="Masukan Tinggi Badan anda"/>
+                    <input type="number" step="any" name="tinggibackpro" class="form-control" placeholder="Masukan Tinggi Badan (cm)"/>
                   </div>
                 </div>
               </div>
@@ -58,7 +58,7 @@
                 <div class="col-sm-10">
                   <div class="input-group input-group-merge">
                     <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-repost"></i></span>
-                    <input type="number" step="any" name="imtbackpro" class="form-control" placeholder="Masukan IMT anda"/>
+                    <input type="number" step="any" name="imtbackpro" class="form-control" placeholder="Masukan IMT (kg/m2)"/>
                   </div>
                 </div>
               </div>
@@ -170,7 +170,7 @@
     </div>
   </div> --}}
 
-  <div class="card">
+  <!-- <div class="card">
     <h5 class="card-header">Tes</h5>
     <div class="card-body">
       <div class="table-responsive text-nowrap">
@@ -208,7 +208,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 @if(Session::get('ngas') >= 0.561 && Session::get('ngas') <= 0.603)
 <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Hasil Gizi anda adalah </span>Gizi Buruk</h4>
