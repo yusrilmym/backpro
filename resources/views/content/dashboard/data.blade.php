@@ -97,7 +97,9 @@
                 <div class="col-sm-10">
                   <div class="input-group input-group-merge">
                     <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-body"></i></span>
+
                     <input type="number" name="berat" step="0.1" class="form-control" placeholder="Masukan Berat Badan (kg)"/>
+
                   </div>
                 </div>
               </div>
@@ -127,21 +129,6 @@
             </form>
           </div>
         </div>
-        <div class="card mb-4">
-        @if(Session::get('ngas') >= 0.561 && Session::get('ngas') <= 0.603)
-        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Hasil Gizi anda adalah </span>Gizi Buruk</h4>
-        @elseif(Session::get('ngas') >= 0.604 && Session::get('ngas') <= 0.646)
-        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Hasil Gizi anda adalah </span>Gizi Kurang</h4>
-        @elseif(Session::get('ngas') >= 0.647 && Session::get('ngas') <= 0.689)
-        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Hasil Gizi anda adalah </span>Gizi Baik</h4>
-        @elseif(Session::get('ngas') >= 0.69 && Session::get('ngas') <= 0.732)
-        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Hasil Gizi anda adalah </span>Beresiko Gizi Lebih</h4>
-        @elseif(Session::get('ngas') >= 0.733 && Session::get('ngas') <= 0.775)
-        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Hasil Gizi anda adalah </span>Gizi Lebih</h4>
-        @elseif(Session::get('ngas') >= 0.776 && Session::get('ngas') <= 0.819)
-        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Hasil Gizi anda adalah </span>Obesitas</h4>
-        @endif
-
     </div>
   </div>
   <!-- <div class="col-xxl">
@@ -200,6 +187,7 @@
             <th>Tinggi Badan</th>
             <th>IMT</th>
             <th>BP</th>
+            <th>Hasil</th>
           </tr>
         </thead>
         <tbody>
@@ -216,6 +204,21 @@
                 <td>{{$row->tinggi}} cm</td>
                 <td>{{$row->imt}} kg/m2</td>
                 <td>{{$row->hasil}}</td>
+                <td>
+                    @if(($row->hasil) >= 0.561 && ($row->hasil) <= 0.603)
+                    Gizi Buruk
+                    @elseif(($row->hasil) >= 0.604 && ($row->hasil) <= 0.646)
+                    Gizi Kurang
+                    @elseif(($row->hasil) >= 0.647 && ($row->hasil) <= 0.689)
+                    Gizi Baik
+                    @elseif(($row->hasil) >= 0.69 && ($row->hasil) <= 0.732)
+                    Beresiko Gizi Lebih
+                    @elseif(($row->hasil) >= 0.733 && ($row->hasil) <= 0.775)
+                    Gizi Lebih
+                    @elseif(($row->hasil) >= 0.776 && ($row->hasil) <= 0.819)
+                    Obesitas
+                    @endif
+                </td>
               </tr>
             @endforeach
         </tbody>
